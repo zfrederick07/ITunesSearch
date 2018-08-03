@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{FD9D2910-1979-4596-A6E7-3E56C464124F}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ITunesSearch/Controllers/HomeController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../../../Downloads/iTunesSearch02/iTunesSearch02/bundleconfig.json">
     <Files>
-      <File FileName="ITunesSearch/Services/AppleAPI.cs" Line="26" Column="13" />
-      <File FileName="ITunesSearch/Controllers/HomeController.cs" Line="20" Column="14" />
+      <File FileName="../../../../Downloads/iTunesSearch02/iTunesSearch02/Startup.cs" Line="13" Column="43" />
+      <File FileName="../../../../Downloads/iTunesSearch02/iTunesSearch02/bundleconfig.json" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

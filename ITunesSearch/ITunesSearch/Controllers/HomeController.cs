@@ -19,7 +19,7 @@ namespace ITunesSearch.Controllers
             if (!string.IsNullOrEmpty(searchResult.SearchText))
             {
                 var clientAPI = new AppleAPI();
-                var searchResults = AppleAPI.Search(searchResult.SearchText ?? string.Empty);
+                var searchResults = AppleAPI.SearchesAsync(searchResult.SearchText ?? string.Empty);
 
                 ViewData.Add("SessionID", HttpContext.Session.Id);
                 ViewData.Add("SearchResults", searchResults.Result);

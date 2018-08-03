@@ -16,12 +16,12 @@ namespace ITunesSearch.Services
 
         const string itunesUrl = "https://itunes.apple.com/search?";
 
-        internal async static Task<IEnumerable<SearchResult>> Search(string searchCriteria, string entity = "song")
+        internal async static Task<IEnumerable<SearchResult>> SearchesAsync(string searchCriteria, string entity = "song")
         {
             var searchResults = new  JSONSearchRoot();
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(itunesUrl);
-
+                            
             var searchUrl = itunesUrl + "term=" + searchCriteria.Replace(" ", "+") 
                                                                 + "&entity=" + entity;
 

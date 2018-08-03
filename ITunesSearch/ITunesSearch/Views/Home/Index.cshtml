@@ -1,25 +1,28 @@
-﻿@{
+﻿@model ITunesSearch.Models.SearchResult
+@{
     ViewData["Title"] = "Home";
 }
-@model ITunesSearch.Models.SearchResult
+
+<div class="row">
+    <div class="col-sm-12">
+        <h2>iTunes Music Search</h2>
+    </div>
+</div>
 
 @using (Html.BeginForm("Search", "Home", FormMethod.Post))
 {
-    <h1>ITunes Search</h1>
-    <br />
-
     <div class="row">
         <div class="col-sm-12">
-            Search Terms:
+            Search Terms:        
             @Html.TextBoxFor(model => model.SearchText)
             @Html.ValidationMessageFor(model => model.SearchText)
-            <button type = "submit" value="submit" class="btn btn-primary">Search</button>
+        <button type="submit" value="submit" class="btn btn-primary">Search</button>
         </div>
     </div>
 }
 <div class="row">
-<div class="col-sm-12">
-    @Html.Partial("_SearchResults")
-</div>
+    <div class="col-sm-12">
+        @Html.Partial("_SearchResults")
+    </div>
 </div>
 
