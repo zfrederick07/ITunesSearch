@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model ITunesSearch.Models.SearchResult
+
+@using (Html.BeginForm("Search", "Home", FormMethod.Post))
+{
+    <h1>ITunes Search</h1>
+    <br />
+
+    @Html.TextBoxFor(model => model.SearchText)
+    @Html.ValidationMessageFor(model => model.SearchText)
+
+    <button type="submit">Search</button>
+
+
+    @Html.DisplayFor(model => model.ArtistName)
+    @Html.DisplayFor(model => model.TrackName)
+
+}
+

@@ -1,0 +1,19 @@
+﻿<Properties StartupConfiguration="{FD9D2910-1979-4596-A6E7-3E56C464124F}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ITunesSearch/Models/SearchResult.cs">
+    <Files>
+      <File FileName="ITunesSearch/Services/AppleAPI.cs" Line="32" Column="43" />
+      <File FileName="ITunesSearch/Controllers/HomeController.cs" Line="23" Column="50" />
+      <File FileName="ITunesSearch/Views/Home/Index.cshtml" Line="4" Column="40" />
+      <File FileName="ITunesSearch/Models/SearchResult.cs" Line="19" Column="9" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/zacharyfrederick/Projects/ITunesSearch/ITunesSearch/Services/AppleAPI.cs" relfile="ITunesSearch/Services/AppleAPI.cs" line="38" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.ITunesSearch PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+</Properties>
