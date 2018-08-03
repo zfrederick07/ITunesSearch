@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using Newtonsoft.Json;
+﻿
 using Microsoft.AspNetCore.Mvc;
 using ITunesSearch.Models;
-using System.Threading.Tasks;
 using ITunesSearch.Services;
+
 
 namespace ITunesSearch.Controllers
 {
@@ -17,14 +13,19 @@ namespace ITunesSearch.Controllers
             return View();
         }
 
-        public IActionResult Search()
+        [HttpPost]
+        public IActionResult Index(SearchResult searchResult)
         {
-            var clientAPI = new AppleAPI();
-            var searchResults = clientAPI.Search("jack johnson");
+            if (!string.IsNullOrEmpty(searchResult.SearchText))
+            {
+                var clientAPI = new AppleAPI();
+                var searchResults = AppleAPI.Search(searchResult.SearchText ?? string.Empty);
 
+                ViewData.Add("SessionID", HttpContext.Session.Id);
+                ViewData.Add("SearchResults", searchResults.Result);
+            }
 
-
-            return View("Index");
+            return View();
         }
     }
 }
