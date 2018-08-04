@@ -1,0 +1,80 @@
+﻿<!--Sets up tabel for search result information-->
+<!--Allows user to sort by Artists name, Collection name, Track, or Kind of result-->
+<!--User can also search inside returned results to narrow down search-->
+
+@model List<SearchResult>
+    @{
+    var searchResults = (List<SearchResult>
+        )ViewData["SearchResults"];
+        var sessionId = (string)ViewData["SessionId"];
+        }
+        <div class="col-8">
+            <div class="row">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-condensed table-striped table-hover sortable" data-toggle="table" data-pagination="true" data-search="true">
+                        <thead>
+                            <tr class="secondary">
+                                <th class="col-sm-2" data-defaultsign="AZ">Artwork</th>
+                                <th class="col-sm-2" data-sortable="true" data-field="ArtistName" data-defaultsign="AZ">Artist</th>
+                                <th class="col-sm-3" data-sortable="true" data-field="CollectionName" data-defaultsign="AZ">Collection</th>
+                                <th class="col-sm-3" data-sortable="true" data-field="Track" data-defaultsign="AZ">Track</th>
+                                <th class="col-sm-2" data-sortable="true" data-field="Kind" data-defaultsign="AZ">Kind</th>
+                            </tr>
+                        </thead>
+                        @if (searchResults == null || searchResults.Count() == 0)
+                        {
+                        <tr>
+                            <td colspan="5">No Records found.</td>
+                        </tr>
+                        }
+                        else
+                        {
+                        foreach (var item in searchResults.OrderBy(x => x.CollectionName).ThenBy(x => x.TrackNumber))
+                        {
+                        <tr>
+                            <td>
+                                <img src="@item.ArtworkUrl100" />
+                            </td>
+                            <td>
+                                @item.ArtistName
+                            </td>
+                            <td>
+                                @item.CollectionName
+                            </td>
+                            <td>
+                                @item.TrackNumber. &nbsp;<a href="@item.TrackViewUrl" onclick="return track('@sessionId', '@item.TrackName', '@System.Net.WebUtility.UrlEncode(@item.TrackViewUrl)');" target="_blank">
+                                    @item.TrackName
+                                </a>
+                            </td>
+                            <td>
+                                @item.Kind
+                            </td>
+                        </tr>
+                        }
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+        <script typeof="text/javascript">function track(sessionId, trackName, trackViewUrl) {
+                var dataType = "application/json; charset=utf-8";
+                var data = {
+                    SessionId: sessionId,
+                    TrackName: trackName,
+                    TrackViewUrl: trackViewUrl
+                }
+
+                //alert(JSON.stringify(data));
+
+                $.ajax({
+                    url: '@Url.Action("PlusOne", "CountClick")',
+                    type: "POST",
+                    dataType: 'json',
+                    data: JSON.stringify(data),
+                    contentType: dataType,
+
+                    success: function(result) {
+                        //alert(result);
+                    }
+                });
+}</script>

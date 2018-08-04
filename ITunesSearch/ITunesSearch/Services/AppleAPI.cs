@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using ITunesSearch.Models;
 using Newtonsoft.Json;
 
@@ -15,23 +16,25 @@ namespace ITunesSearch.Services
 
         const string itunesUrl = "https://itunes.apple.com/search?";
 
-        public IEnumerable<SearchResult> Search(string searchCriteria, string entity = "song")
+        internal async static Task<IEnumerable<SearchResult>> Search(string searchCriteria)
         {
             var searchResults = new  JSONSearchRoot();
+
+            //Opens up client and sets the base address for the Itunes API
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(itunesUrl);
 
-
-            var searchUrl = itunesUrl + "term=" + searchCriteria.Replace(" ", "+") 
-                                                                + "&entity=" + entity;
-
+            var searchUrl = itunesUrl + "term=" + searchCriteria.Replace(" ", "+");
+             
             // Add an Accept header for JSON format.
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
 
             // List data response.
             HttpResponseMessage response =
                 client.GetAsync(searchUrl).Result; 
-            
+
+            //if there is a response from the URL the model is updated with the JSON information
             if (response.IsSuccessStatusCode)
             {
                 searchResults = JsonConvert.DeserializeObject<JSONSearchRoot>
