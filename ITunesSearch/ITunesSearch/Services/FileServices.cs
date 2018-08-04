@@ -1,4 +1,5 @@
-﻿using ITunesSearch.Models;
+﻿using System;
+using ITunesSearch.Models;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
@@ -7,6 +8,7 @@ namespace ITunesSearch.Services
 {
     public static class FileServices
     {
+        //Writes the information of each click to a file to use later
         public static void SaveToFile(List<Click> clicks)
         {
             var clicksJson = JsonConvert.SerializeObject(clicks);
@@ -17,6 +19,7 @@ namespace ITunesSearch.Services
             }
         }
 
+        //Read the click file for the information about each click
         public static List<Click> ReadFromFile()
         {
             var uri = GetURI();

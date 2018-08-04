@@ -1,28 +1,29 @@
-﻿@model ITunesSearch.Models.SearchResult
+﻿<!--Sets up Search box for user to input information to search Itunes-->
+<!--Calles _SearchResults partial to set up tabel with search results-->
+
+@model ITunesSearch.Models.SearchResult
 @{
     ViewData["Title"] = "Home";
 }
 
 <div class="row">
     <div class="col-sm-12">
-        <h2>iTunes Music Search</h2>
+        <h2>iTunes Search</h2>
     </div>
 </div>
-
-@using (Html.BeginForm("Search", "Home", FormMethod.Post))
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
 {
-    <div class="row">
-        <div class="col-sm-12">
-            Search Terms:        
-            @Html.TextBoxFor(model => model.SearchText)
-            @Html.ValidationMessageFor(model => model.SearchText)
+<div class="row">
+    <div class="col-sm-12">
+        Search Terms:
+        @Html.TextBoxFor(model => model.SearchText)
+        @Html.ValidationMessageFor(model => model.SearchText)
         <button type="submit" value="submit" class="btn btn-primary">Search</button>
-        </div>
     </div>
+</div>
 }
 <div class="row">
     <div class="col-sm-12">
         @Html.Partial("_SearchResults")
     </div>
 </div>
-

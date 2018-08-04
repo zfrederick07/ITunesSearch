@@ -6,12 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ITunesSearch.Controllers
 {
-
+    //Click count controller
     public class CountClickController : Controller
     {
         private static List<Click> clicks;
         private const int _writeBuffer = 1;
 
+        //Records the each click and writes it to a file
         [HttpPost]
         public void PlusOne([FromBody]Click click)
         {

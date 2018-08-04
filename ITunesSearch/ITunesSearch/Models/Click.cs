@@ -2,6 +2,7 @@
 
 namespace ITunesSearch.Models
 {
+    //Click Model for the information of the clicks on the site
     public class Click
     {
         public string SessionId { get; set; }

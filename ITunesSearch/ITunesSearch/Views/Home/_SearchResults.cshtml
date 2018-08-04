@@ -1,4 +1,8 @@
-﻿@model List<SearchResult>
+﻿<!--Sets up tabel for search result information-->
+<!--Allows user to sort by Artists name, Collection name, Track, or Kind of result-->
+<!--User can also search inside returned results to narrow down search-->
+
+@model List<SearchResult>
     @{
     var searchResults = (List<SearchResult>
         )ViewData["SearchResults"];
@@ -11,15 +15,16 @@
                         <thead>
                             <tr class="secondary">
                                 <th class="col-sm-2" data-defaultsign="AZ">Artwork</th>
-                                <th class="col-sm-3" data-sortable="true" data-field="ArtistName" data-defaultsign="AZ">Artist</th>
-                                <th class="col-sm-4" data-sortable="true" data-field="CollectionName" data-defaultsign="AZ">Collection</th>
+                                <th class="col-sm-2" data-sortable="true" data-field="ArtistName" data-defaultsign="AZ">Artist</th>
+                                <th class="col-sm-3" data-sortable="true" data-field="CollectionName" data-defaultsign="AZ">Collection</th>
                                 <th class="col-sm-3" data-sortable="true" data-field="Track" data-defaultsign="AZ">Track</th>
+                                <th class="col-sm-2" data-sortable="true" data-field="Kind" data-defaultsign="AZ">Kind</th>
                             </tr>
                         </thead>
                         @if (searchResults == null || searchResults.Count() == 0)
                         {
                         <tr>
-                            <td colspan="4">No Records found.</td>
+                            <td colspan="5">No Records found.</td>
                         </tr>
                         }
                         else
@@ -41,6 +46,9 @@
                                     @item.TrackName
                                 </a>
                             </td>
+                            <td>
+                                @item.Kind
+                            </td>
                         </tr>
                         }
                         }
@@ -59,7 +67,7 @@
                 //alert(JSON.stringify(data));
 
                 $.ajax({
-                    url: '@Url.Action("PlusOne", "ClickCount")',
+                    url: '@Url.Action("PlusOne", "CountClick")',
                     type: "POST",
                     dataType: 'json',
                     data: JSON.stringify(data),
